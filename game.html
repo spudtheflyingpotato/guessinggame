@@ -1,0 +1,32 @@
+<textarea id="computer" rows="10" cols="40">
+
+</textarea>
+<br>
+<input id="me">
+<button id="guessbutton">Guess</button>
+
+<script>
+let output = document.getElementById('computer');
+let input = document.getElementById('me');
+let button = document.getElementById('guessbutton');
+
+output.value += "I'm thinking of a number, guess what it is.";
+const secret = Math.floor(Math.random()*100);
+
+button.addEventListener('click', function(){
+    let guess = parseInt(input.value);
+    if(isNaN(guess)){
+        output.value += (' ' + guess + ' Please use a number!');
+    }
+    else if(guess == secret){
+        output.value = ('You won! Good guess. ');
+    }
+    else if(guess < secret){
+        output.value += (' ' + guess + ' Go higher! Try again. ')
+    }
+    else if(guess > secret){
+        output.value += (' ' + guess + ' Go lower! Try again. ')
+    }
+});
+
+</script>
